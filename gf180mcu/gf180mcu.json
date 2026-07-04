@@ -97,10 +97,10 @@
         "magic": "MAGIC_COMMIT"
     },
     "reference": {
-        "open_pdks": "02c781174f49a976796a6719c7d20888b58343d3",
-        "magic": "e7b8e89d2fe4eed1d51ee6a66a3d818c2095b024",
+        "open_pdks": "e6ce57f565deba8d4adf47f302daa192ae44ecab",
+        "magic": "d157eea7f3c397271a0b6d1e5a98b06101284a13",
         "gf180mcu_pdk": "a897aa30369d3bcec87d9d50ce9b01f320f854ef",
-        "gf180mcu_fd_pr": "a0c31bd71c2084a5283204dc4e80f1f901d2d5d0",
+        "gf180mcu_fd_pr": "b6866b82e2bd560a29f3576c19106ff7b8b41b10",
         "gf180mcu_fd_pv": "e766ad1974edf7712ebd4729e40037f24d9232cb",
         "gf180mcu_fd_io": "40cdef6d74ec5c9b7d596c147df94c98366afc5b",
         "gf180mcu_fd_sc_mcu7t5v0": "0ef8889a8df0acf959683fbe73013f342a2206a2",
