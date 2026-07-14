@@ -1359,8 +1359,7 @@ digital-avalon-%:
 	cp -rp ${AVALON_REF_SOURCE}/mag ${STAGING_PATH}/${GF180MCU$*}/libs.ref/gf180mcu_as_sc_mcu7t3v3
 	rm -rf ${STAGING_PATH}/${GF180MCU$*}/libs.ref/gf180mcu_as_sc_mcu7t3v3/gds
 	mkdir ${STAGING_PATH}/${GF180MCU$*}/libs.ref/gf180mcu_as_sc_mcu7t3v3/gds
-	# Remove the "_merged" suffix from the GDS library
-	cp ${AVALON_REF_SOURCE}/gf180mcu_as_sc_mcu7t3v3__merged.gds ${STAGING_PATH}/${GF180MCU$*}/libs.ref/gf180mcu_as_sc_mcu7t3v3/gds/gf180mcu_as_sc_mcu7t3v3.gds
+	cp -rp ${AVALON_REF_SOURCE}/gds ${STAGING_PATH}/${GF180MCU$*}/libs.ref/gf180mcu_as_sc_mcu7t3v3
 	rm -rf ${STAGING_PATH}/${GF180MCU$*}/libs.ref/gf180mcu_as_sc_mcu7t3v3/lef
 	mkdir -p ${STAGING_PATH}/${GF180MCU$*}/libs.ref/gf180mcu_as_sc_mcu7t3v3/lef
 	cp -rp ${AVALON_REF_SOURCE}/lef ${STAGING_PATH}/${GF180MCU$*}/libs.ref/gf180mcu_as_sc_mcu7t3v3
