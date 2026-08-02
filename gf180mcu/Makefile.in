@@ -862,9 +862,11 @@ xschem-%: ${GF180MCU_PR_PATH}
 	rm -rf ${XSCHEM_STAGING_$*}
 	mkdir -p ${XSCHEMTOP_STAGING_$*}
 	mkdir -p ${XSCHEM_STAGING_$*}
-	cp -rp ${GF180MCU_PR_PATH}/cells/xschem/symbols ${XSCHEM_STAGING_$*}
+	cp -rp ${GF180MCU_PR_PATH}/cells/xschem/gf180mcu_fd_pr ${XSCHEM_STAGING_$*}
+	ln -s gf180mcu_fd_pr ${XSCHEM_STAGING_$*}/symbols
 	cp -rp ${GF180MCU_PR_PATH}/cells/xschem/tests ${XSCHEM_STAGING_$*}
 	cp -rp ${GF180MCU_PR_PATH}/cells/xschem/xschemrc ${XSCHEM_STAGING_$*}
+	cp -rp ${GF180MCU_PR_PATH}/cells/xschem/xschem-menu ${XSCHEM_STAGING_$*}
 	# Make open_pdks-specific modifications to the xschemrc file
 	./custom/scripts/fix_xschemrc.py ${XSCHEM_STAGING_$*}/xschemrc \
 		${GF180MCU$*} 2>&1 | tee -a ${GF180MCU$*}_make.log || true
