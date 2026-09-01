@@ -1,0 +1,5 @@
+.include "./BSIM3V3N.mod"
+.include "./BSIM3V3P.mod"
+.include "./mos.lib"
+.include "./diode.lib"
+.include "./passive.lib"

@@ -1,0 +1,823 @@
+library (OpenRule1um_StdCell) {
+  capacitive_load_unit (1.0, pf);
+  current_unit: "1uA";
+  default_operating_conditions: __CORNER_NAME__;
+  delay_model: table_lookup;
+  in_place_swap_mode: match_footprint;
+  input_threshold_pct_fall: 50.0;
+  input_threshold_pct_rise: 50.0;
+  leakage_power_unit: "1nW";
+  nom_process: 1.0;
+  nom_temperature: __TEMP__;
+  nom_voltage: __VOLTAGE__;
+  output_threshold_pct_fall: 50.0;
+  output_threshold_pct_rise: 50.0;
+  pulling_resistance_unit: "1kohm";
+  slew_lower_threshold_pct_fall: 20.0;
+  slew_lower_threshold_pct_rise: 20.0;
+  slew_upper_threshold_pct_fall: 80.0;
+  slew_upper_threshold_pct_rise: 80.0;
+  time_unit: "1ns";
+  voltage_unit: "1V";
+  operating_conditions (__CORNER_NAME__) {
+    process: 1.0;
+    temperature: __TEMP__;
+    voltage: __VOLTAGE__;
+  }
+  lu_table_template (delay_template_4x5) {
+    index_1 (
+      "1000.0, 1001.0, 1002.0, 1003.0"
+    );
+    index_2 (
+      "1000.0, 1001.0, 1002.0, 1003.0, 1004.0"
+    );
+    variable_1: total_output_net_capacitance;
+    variable_2: input_net_transition;
+  }
+  lu_table_template (delay_template_5x1) {
+    index_1 (
+      "1000.0, 1001.0, 1002.0, 1003.0, 1004.0"
+    );
+    variable_1: input_net_transition;
+  }
+  lu_table_template (delay_template_6x1) {
+    index_1 (
+      "1000.0, 1001.0, 1002.0, 1003.0, 1004.0, 1005.0"
+    );
+    variable_1: input_net_transition;
+  }
+  lu_table_template (delay_template_6x6) {
+    index_1 (
+      "1000.0, 1001.0, 1002.0, 1003.0, 1004.0, 1005.0"
+    );
+    index_2 (
+      "1000.0, 1001.0, 1002.0, 1003.0, 1004.0, 1005.0"
+    );
+    variable_1: total_output_net_capacitance;
+    variable_2: input_net_transition;
+  }
+  power_lut_template (energy_template_4x5) {
+    index_1 (
+      "1000.0, 1001.0, 1002.0, 1003.0"
+    );
+    index_2 (
+      "1000.0, 1001.0, 1002.0, 1003.0, 1004.0"
+    );
+    variable_1: total_output_net_capacitance;
+    variable_2: input_transition_time;
+  }
+  power_lut_template (energy_template_6x6) {
+    index_1 (
+      "1000.0, 1001.0, 1002.0, 1003.0, 1004.0, 1005.0"
+    );
+    index_2 (
+      "1000.0, 1001.0, 1002.0, 1003.0, 1004.0, 1005.0"
+    );
+    variable_1: total_output_net_capacitance;
+    variable_2: input_transition_time;
+  }
+  lu_table_template (hold_template_3x6) {
+    index_1 (
+      "1000.0, 1001.0, 1002.0"
+    );
+    index_2 (
+      "1000.0, 1001.0, 1002.0, 1003.0, 1004.0, 1005.0"
+    );
+    variable_1: related_pin_transition;
+    variable_2: constrained_pin_transition;
+  }
+  power_lut_template (passive_energy_template_5x1) {
+    index_1 (
+      "1000.0, 1001.0, 1002.0, 1003.0, 1004.0"
+    );
+    variable_1: input_transition_time;
+  }
+  power_lut_template (passive_energy_template_6x1) {
+    index_1 (
+      "1000.0, 1001.0, 1002.0, 1003.0, 1004.0, 1005.0"
+    );
+    variable_1: input_transition_time;
+  }
+  lu_table_template (recovery_template_3x6) {
+    index_1 (
+      "1000.0, 1001.0, 1002.0"
+    );
+    index_2 (
+      "1000.0, 1001.0, 1002.0, 1003.0, 1004.0, 1005.0"
+    );
+    variable_1: related_pin_transition;
+    variable_2: constrained_pin_transition;
+  }
+  lu_table_template (recovery_template_6x6) {
+    index_1 (
+      "1000.0, 1001.0, 1002.0, 1003.0, 1004.0, 1005.0"
+    );
+    index_2 (
+      "1000.0, 1001.0, 1002.0, 1003.0, 1004.0, 1005.0"
+    );
+    variable_1: related_pin_transition;
+    variable_2: constrained_pin_transition;
+  }
+  lu_table_template (removal_template_3x6) {
+    index_1 (
+      "1000.0, 1001.0, 1002.0"
+    );
+    index_2 (
+      "1000.0, 1001.0, 1002.0, 1003.0, 1004.0, 1005.0"
+    );
+    variable_1: related_pin_transition;
+    variable_2: constrained_pin_transition;
+  }
+  lu_table_template (setup_template_3x6) {
+    index_1 (
+      "1000.0, 1001.0, 1002.0"
+    );
+    index_2 (
+      "1000.0, 1001.0, 1002.0, 1003.0, 1004.0, 1005.0"
+    );
+    variable_1: related_pin_transition;
+    variable_2: constrained_pin_transition;
+  }
+  cell (inv1) {
+    area: 1.4079;
+    cell_footprint: inv;
+    pin (A) {
+      direction: input;
+    }
+    pin (X) {
+      direction: output;
+      function: "(!A)";
+    }
+  }
+  cell (inv4) {
+    area: 1.4079;
+    cell_footprint: inv;
+    pin (A) {
+      direction: input;
+    }
+    pin (X) {
+      direction: output;
+      function: "(!A)";
+    }
+  }
+  cell (inv8) {
+    area: 1.4079;
+    cell_footprint: inv;
+    pin (A) {
+      direction: input;
+    }
+    pin (X) {
+      direction: output;
+      function: "(!A)";
+    }
+  }
+  cell (na21) {
+    area: 1.4079;
+    cell_footprint: nd2;
+    pin (A) {
+      direction: input;
+    }
+    pin (B) {
+      direction: input;
+    }
+    pin (X) {
+      direction: output;
+      function: "(!A)|(!B)";
+    }
+  }
+  cell (na31) {
+    area: 1.4079;
+    cell_footprint: nd3;
+    pin (A) {
+      direction: input;
+    }
+    pin (B) {
+      direction: input;
+    }
+    pin (C) {
+      direction: input;
+    }
+    pin (X) {
+      direction: output;
+      function: "(!A)|(!B)|(!C)";
+    }
+  }
+  cell (na41) {
+    area: 1.4079;
+    cell_footprint: nd4;
+    pin (A) {
+      direction: input;
+    }
+    pin (B) {
+      direction: input;
+    }
+    pin (C) {
+      direction: input;
+    }
+    pin (D) {
+      direction: input;
+    }
+    pin (X) {
+      direction: output;
+      function: "(!A)|(!B)|(!C)|(!D)";
+    }
+  }
+  cell (nr21) {
+    area: 1.4079;
+    cell_footprint: nr2;
+    pin (A) {
+      direction: input;
+    }
+    pin (B) {
+      direction: input;
+    }
+    pin (X) {
+      direction: output;
+      function: "(!A&!B)";
+    }
+  }
+  cell (nr31) {
+    area: 1.4079;
+    cell_footprint: nr3;
+    pin (A) {
+      direction: input;
+    }
+    pin (B) {
+      direction: input;
+    }
+    pin (C) {
+      direction: input;
+    }
+    pin (X) {
+      direction: output;
+      function: "(!A&!B&!C)";
+    }
+  }
+  cell (buf1) {
+    area: 1.4079;
+    cell_footprint: buff;
+    pin (A) {
+      direction: input;
+    }
+    pin (Y) {
+      direction: output;
+      function: "(A)";
+    }
+  }
+  cell (buf2) {
+    area: 1.4079;
+    cell_footprint: buff;
+    pin (A) {
+      direction: input;
+    }
+    pin (Y) {
+      direction: output;
+      function: "(A)";
+    }
+  }
+  cell (buf4) {
+    area: 1.4079;
+    cell_footprint: buff;
+    pin (A) {
+      direction: input;
+    }
+    pin (Y) {
+      direction: output;
+      function: "(A)";
+    }
+  }
+  cell (buf8) {
+    area: 1.4079;
+    cell_footprint: buff;
+    pin (A) {
+      direction: input;
+    }
+    pin (Y) {
+      direction: output;
+      function: "(A)";
+    }
+  }
+  cell (cinv) {
+    area: 1.4079;
+    cell_footprint: tbuf;
+    pin (A) {
+      direction: input;
+    }
+    pin (OE) {
+      direction: input;
+    }
+    pin (X) {
+      direction: output;
+      function: "(!A)";
+      three_state : "(!OE)";
+    }
+  }
+  cell (exor) {
+    area: 1.4079;
+    cell_footprint: xor2;
+    pin (A) {
+      direction: input;
+    }
+    pin (B) {
+      direction: input;
+    }
+    pin (X) {
+      direction: output;
+      function: "(A&!B) | (!A&B)";
+    }
+  }
+  cell (exnr) {
+    area: 1.4079;
+    cell_footprint: xnr2;
+    pin (A) {
+      direction: input;
+    }
+    pin (B) {
+      direction: input;
+    }
+    pin (X) {
+      direction: output;
+      function: "(A&B) | (!A&!B)";
+    }
+  }
+  cell (an21) {
+    area: 1.4079;
+    cell_footprint: an2;
+    pin (A) {
+      direction: input;
+    }
+    pin (B) {
+      direction: input;
+    }
+    pin (Y) {
+      direction: output;
+      function: "(A&B)";
+    }
+  }
+  cell (an31) {
+    area: 1.4079;
+    cell_footprint: an2;
+    pin (A) {
+      direction: input;
+    }
+    pin (B) {
+      direction: input;
+    }
+    pin (C) {
+      direction: input;
+    }
+    pin (Y) {
+      direction: output;
+      function: "(A&B&C)";
+    }
+  }
+  cell (an41) {
+    area: 1.4079;
+    cell_footprint: an2;
+    pin (A) {
+      direction: input;
+    }
+    pin (B) {
+      direction: input;
+    }
+    pin (C) {
+      direction: input;
+    }
+    pin (D) {
+      direction: input;
+    }
+    pin (Y) {
+      direction: output;
+      function: "(A&B&C&D)";
+    }
+  }
+  cell (or21) {
+    area: 1.4079;
+    cell_footprint: or2;
+    pin (A) {
+      direction: input;
+    }
+    pin (B) {
+      direction: input;
+    }
+    pin (X) {
+      direction: output;
+      function: "(A|B)";
+    }
+  }
+  cell (or31) {
+    area: 1.4079;
+    cell_footprint: or2;
+    pin (A) {
+      direction: input;
+    }
+    pin (B) {
+      direction: input;
+    }
+    pin (C) {
+      direction: input;
+    }
+    pin (X) {
+      direction: output;
+      function: "(A|B|C)";
+    }
+  }
+  cell (na212) {
+    area: 1.4079;
+    cell_footprint: oai21;
+    pin (A0) {
+      direction: input;
+    }
+    pin (A1) {
+      direction: input;
+    }
+    pin (B0) {
+      direction: input;
+    }
+    pin (X) {
+      direction: output;
+      function: "(!A0&!A1) | (!B0)";
+    }
+  }
+  cell (na222) {
+    area: 1.4079;
+    cell_footprint: oai21;
+    pin (A0) {
+      direction: input;
+    }
+    pin (A1) {
+      direction: input;
+    }
+    pin (B0) {
+      direction: input;
+    }
+    pin (B1) {
+      direction: input;
+    }
+    pin (X) {
+      direction: output;
+      function: "(!A0&!A1) | (!B0&!B1)";
+    }
+  }
+  cell (nr212) {
+    area: 1.4079;
+    cell_footprint: aoi21;
+    pin (A0) {
+      direction: input;
+    }
+    pin (A1) {
+      direction: input;
+    }
+    pin (B0) {
+      direction: input;
+    }
+    pin (X) {
+      direction: output;
+      function: "(!A0&!B0) | (!A1&!B0)";
+    }
+  }
+  cell (nr222) {
+    area: 1.4079;
+    cell_footprint: aoi21;
+    pin (A0) {
+      direction: input;
+    }
+    pin (A1) {
+      direction: input;
+    }
+    pin (B0) {
+      direction: input;
+    }
+    pin (B1) {
+      direction: input;
+    }
+    pin (X) {
+      direction: output;
+      function: "(!A0&!B0) | (!A0&!B1) | (!A1&!B0) | (!A1&!B1)";
+    }
+  }
+  cell (dff1) {
+    area: 1.4079;
+    cell_footprint: dfq;
+    ff (ds,ps) {
+      next_state : "D";
+      clocked_on : "!CK";
+      clear : "0";
+      preset : "0";
+    }
+    pin (D) {
+      direction: input;
+    }
+    pin (CK) {
+      direction: input;
+      clock : true;
+    }
+    pin (Q) {
+      direction: output;
+      function: "ds";
+    }
+    pin (QB) {
+      direction: output;
+      function: "!ds";
+    }
+  }
+  cell (dff1m2) {
+    area: 1.4079;
+    cell_footprint: dfq;
+    ff (ds,ps) {
+      next_state : "D";
+      clocked_on : "!CK";
+      clear : "0";
+      preset : "0";
+    }
+    pin (D) {
+      direction: input;
+    }
+    pin (CK) {
+      direction: input;
+      clock : true;
+    }
+    pin (Q) {
+      direction: output;
+      function: "ds";
+    }
+    pin (QB) {
+      direction: output;
+      function: "!ds";
+    }
+  }
+  cell (dff1_r) {
+    area: 1.4079;
+    cell_footprint: dfq;
+    ff (ds,ps) {
+      next_state : "D";
+      clocked_on : "CK";
+      clear : "0";
+      preset : "0";
+    }
+    pin (D) {
+      direction: input;
+    }
+    pin (CK) {
+      direction: input;
+      clock : true;
+    }
+    pin (Q) {
+      direction: output;
+      function: "ds";
+    }
+    pin (QB) {
+      direction: output;
+      function: "!ds";
+    }
+  }
+  cell (dff1m2_r) {
+    area: 1.4079;
+    cell_footprint: dfq;
+    ff (ds,ps) {
+      next_state : "D";
+      clocked_on : "CK";
+      clear : "0";
+      preset : "0";
+    }
+    pin (D) {
+      direction: input;
+    }
+    pin (CK) {
+      direction: input;
+      clock : true;
+    }
+    pin (Q) {
+      direction: output;
+      function: "ds";
+    }
+    pin (QB) {
+      direction: output;
+      function: "!ds";
+    }
+  }
+  cell (rff1) {
+    area: 1.4079;
+    cell_footprint: dfcnq;
+    ff (ds,ps) {
+      next_state : "D";
+      clocked_on : "!CK";
+      clear : "R";
+      preset : "0";
+    }
+    pin (D) {
+      direction: input;
+    }
+    pin (CK) {
+      direction: input;
+      clock : true;
+    }
+    pin (R) {
+      direction: input;
+    }
+    pin (Q) {
+      direction: output;
+      function: "ds";
+    }
+    pin (QB) {
+      direction: output;
+      function: "!ds";
+    }
+  }
+  cell (rff1m2) {
+    area: 1.4079;
+    cell_footprint: dfcnq;
+    ff (ds,ps) {
+      next_state : "D";
+      clocked_on : "!CK";
+      clear : "R";
+      preset : "0";
+    }
+    pin (D) {
+      direction: input;
+    }
+    pin (CK) {
+      direction: input;
+      clock : true;
+    }
+    pin (R) {
+      direction: input;
+    }
+    pin (Q) {
+      direction: output;
+      function: "ds";
+    }
+    pin (QB) {
+      direction: output;
+      function: "!ds";
+    }
+  }
+  cell (rff1_r) {
+    area: 1.4079;
+    cell_footprint: dfcnq;
+    ff (ds,ps) {
+      next_state : "D";
+      clocked_on : "CK";
+      clear : "R";
+      preset : "0";
+    }
+    pin (D) {
+      direction: input;
+    }
+    pin (CK) {
+      direction: input;
+      clock : true;
+    }
+    pin (R) {
+      direction: input;
+    }
+    pin (Q) {
+      direction: output;
+      function: "ds";
+    }
+    pin (QB) {
+      direction: output;
+      function: "!ds";
+    }
+  }
+  cell (rff1m2_r) {
+    area: 1.4079;
+    cell_footprint: dfcnq;
+    ff (ds,ps) {
+      next_state : "D";
+      clocked_on : "CK";
+      clear : "R";
+      preset : "0";
+    }
+    pin (D) {
+      direction: input;
+    }
+    pin (CK) {
+      direction: input;
+      clock : true;
+    }
+    pin (R) {
+      direction: input;
+    }
+    pin (Q) {
+      direction: output;
+      function: "ds";
+    }
+    pin (QB) {
+      direction: output;
+      function: "!ds";
+    }
+  }
+  cell (sff1) {
+    area: 1.4079;
+    cell_footprint: dfsnq;
+    ff (ds,ps) {
+      next_state : "D";
+      clocked_on : "!CK";
+      clear : "0";
+      preset : "!S";
+    }
+    pin (D) {
+      direction: input;
+    }
+    pin (CK) {
+      direction: input;
+      clock : true;
+    }
+    pin (S) {
+      direction: input;
+    }
+    pin (Q) {
+      direction: output;
+      function: "ds";
+    }
+    pin (QB) {
+      direction: output;
+      function: "!ds";
+    }
+  }
+  cell (sff1_r) {
+    area: 1.4079;
+    cell_footprint: dfsnq;
+    ff (ds,ps) {
+      next_state : "D";
+      clocked_on : "CK";
+      clear : "0";
+      preset : "!S";
+    }
+    pin (D) {
+      direction: input;
+    }
+    pin (CK) {
+      direction: input;
+      clock : true;
+    }
+    pin (S) {
+      direction: input;
+    }
+    pin (Q) {
+      direction: output;
+      function: "ds";
+    }
+    pin (QB) {
+      direction: output;
+      function: "!ds";
+    }
+  }
+  cell (sff1m2) {
+    area: 1.4079;
+    cell_footprint: dfsnq;
+    ff (ds,ps) {
+      next_state : "D";
+      clocked_on : "!CK";
+      clear : "0";
+      preset : "!S";
+    }
+    pin (D) {
+      direction: input;
+    }
+    pin (CK) {
+      direction: input;
+      clock : true;
+    }
+    pin (S) {
+      direction: input;
+    }
+    pin (Q) {
+      direction: output;
+      function: "ds";
+    }
+    pin (QB) {
+      direction: output;
+      function: "!ds";
+    }
+  }
+  cell (sff1m2_r) {
+    area: 1.4079;
+    cell_footprint: dfsnq;
+    ff (ds,ps) {
+      next_state : "D";
+      clocked_on : "CK";
+      clear : "0";
+      preset : "!S";
+    }
+    pin (D) {
+      direction: input;
+    }
+    pin (CK) {
+      direction: input;
+      clock : true;
+    }
+    pin (S) {
+      direction: input;
+    }
+    pin (Q) {
+      direction: output;
+      function: "ds";
+    }
+    pin (QB) {
+      direction: output;
+      function: "!ds";
+    }
+  }
+}

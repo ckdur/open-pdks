@@ -1,0 +1,11 @@
+*.log
+OpenRule1um
+OpenRule1um_MakeLSI
+OpenRule1umPDK_setupEDA
+custom/OpenRule1um_StdCell/gds/*
+# custom/OpenRule1um_StdCell/spice/* # Because is modified
+# custom/OpenRule1um_StdCell/cdl/* # Because is modified
+/Makefile
+chars/*
+ngspice/*
+!ngspice/main.lib
