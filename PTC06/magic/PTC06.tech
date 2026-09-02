@@ -1,0 +1,312 @@
+tech
+  ptc06
+end
+
+planes
+  pcap
+  pcnt
+  pdiff
+  pdio
+  pdm_dcn
+  pdm_nscn
+  pdm_pcn
+  pdm_pscn
+  pdm_via1
+  pdm_via2
+  pframe
+  phpol
+  pm1
+  pml1
+  pm2
+  pml2
+  pm3
+  pml3
+  pnarea
+  pnwl
+  pnwl_dp
+  pparea
+  ppol
+  pres
+  ptext
+  pvia1
+  pvia2
+  pref
+  punk120
+end
+
+# We make sure here that metal and vias have the same plane
+# The same goes for actives and contact
+types
+  pnwl nwl,lnwl
+  pnwl_dp nwl_dp,lnwl_dp
+  pdiff ldiff
+  ppol pol,poly
+  phpol hpol,lhpol
+  pcnt cnt,lcnt,diff
+  pres res,lres
+  pcap cap,lcap
+  pdio dio,ldio
+  pparea parea,lparea
+  pnarea narea,lnarea
+  pdm_dcn dm_dcn,ldm_dcn
+  pdm_pcn dm_pcn,ldm_pcn
+  pdm_nscn dm_nscn,ldm_nscn
+  pdm_pscn dm_pscn,ldm_pscn
+  pdm_via1 dm_via1,ldm_via1
+  pdm_via2 dm_via2,ldm_via2
+  pm1 m1
+  pml1 ml1,via1
+#  pvia1 lvia1
+  pm2 m2
+  pml2 ml2,via2
+#  pvia2 via2
+  pml3 ml3,m3
+  ptext text,ltext
+  pframe frame,lframe
+  pref ref,lref
+  punk120 unk120,lunk120
+end
+
+contact
+  cnt diff ml1
+  via1 ml1 ml2
+  via2 ml2 ml3
+
+  stackable
+end
+
+styles
+  styletype	mos
+  lnwl ndiffusion
+  lnwl_dp implant7
+  ldiff pdiffusion
+  poly polysilicon
+  lhpol implant3
+  lcnt implant4
+  lres metal4
+  lcap overglass
+  ldio implant5
+  lparea implant2
+  lnarea implant1
+  ldm_dcn metal5
+  ldm_pcn metal6
+  ldm_nscn metal7
+  ldm_pscn metal8
+  ldm_via1 metal9
+  ldm_via2 metal10
+  m1 metal1
+  via1 metal1 metal2 via1
+  m2 metal2
+  via2 metal2 metal3 via2
+  m3 metal3
+  ltext comment
+  lframe subcircuit
+  lref comment
+  lunk120 comment
+end
+
+compose
+end
+
+connect
+end
+
+cifoutput
+  style gdsii
+  scalefactor 1 nanometers
+
+  layer nwl nwl
+    calma 1 0
+  layer nwl_dp nwl_dp
+    calma 2 0
+  layer diff diff
+    calma 3 0
+  layer pol pol
+    calma 5 0
+  layer hpol hpol
+    calma 6 0
+  layer cnt cnt
+    calma 7 0
+  layer res res
+    calma 15 0
+  layer cap cap
+    calma 16 0
+  layer dio dio
+    calma 17 0
+  layer parea parea
+    calma 18 0
+  layer narea narea
+    calma 19 0
+  layer dm_dcn dm_dcn
+    calma 101 0
+  layer dm_pcn dm_pcn
+    calma 102 0
+  layer dm_nscn dm_nscn
+    calma 103 0
+  layer dm_pscn dm_pscn
+    calma 104 0
+  layer dm_via1 dm_via1
+    calma 105 0
+  layer dm_via1 dm_via1
+    calma 106 0
+  layer ml1 ml1
+    calma 8 0
+  layer via1 via1
+    calma 9 0
+  layer ml2 ml2
+    calma 10 0
+  layer via2 via2
+    calma 11 0
+  layer ml3 ml3
+    calma 12 0
+  layer text text
+    calma 13 0
+  layer frame frame
+    calma 14 0
+  layer ref ref
+    calma 0 0
+  layer unk120 unk120
+    calma 120 0
+
+  style drc
+    scalefactor 1 nanometers
+    options calma-permissive-labels
+
+  style density
+    scalefactor 1 nanometers
+    options calma-permissive-labels
+    gridlimit 5
+
+  style patternfill
+    scalefactor 1 nanometers
+    options calma-permissive-labels
+    gridlimit 5
+
+end
+
+cifinput
+  style gdsii
+  scalefactor 1 nanometers
+
+  layer lnwl nwl
+  layer lnwl_dp nwl_dp
+  layer ldiff diff
+  layer poly pol
+  layer lhpol hpol
+  layer lcnt cnt
+  layer lres res
+  layer lcap cap
+  layer ldio dio
+  layer lparea parea
+  layer lnarea narea
+  layer ldm_dcn dm_dcn
+  layer ldm_pcn dm_pcn
+  layer ldm_nscn dm_nscn
+  layer ldm_pscn dm_pscn
+  layer ldm_via1 dm_via1
+  layer ldm_via2 dm_via2
+  layer m1 ml1
+  labels ml1 port
+  layer via1 via1
+  layer m2 ml2
+  labels ml2 port
+  layer via2 via2
+  layer m3 ml3
+  labels ml3 port
+  layer ltext text
+  layer lframe frame
+  layer lref ref
+  layer lunk120 unk120
+
+  calma nwl 1 0
+  calma nwl_dp 2 0
+  calma diff 3 0
+  calma pol 5 0
+  calma hpol 6 0
+  calma cnt 7 0
+  calma res 15 0
+  calma cap 16 0
+  calma dio 17 0
+  calma parea 18 0
+  calma narea 19 0
+  calma dm_dcn 101 0
+  calma dm_pcn 102 0
+  calma dm_nscn 103 0
+  calma dm_pscn 104 0
+  calma dm_via1 105 0
+  calma dm_via2 106 0
+  calma ml1 8 0
+  calma via1 9 0
+  calma ml2 10 0
+  calma via2 11 0
+  calma ml3 12 0
+  calma text 13 0
+  calma frame 14 0
+  calma ref 0 0
+  calma unk120 120 0
+
+  templayer allbound frame
+    boundary
+end
+
+drc
+  style drc variants (fast),(full),(routing)
+  scalefactor 10
+  cifstyle drc
+
+  variants (fast),(full)
+
+  width diff 100 "dummy diff width"
+  width pol 100 "dummy poly width"
+  width m1 100 "dummy m1 width"
+  width m2 100 "dummy m2 width"
+  width m3 100 "dummy m3 width"
+end
+
+lef
+  masterslice poly POL
+  routing m1 ML1
+  routing m2 ML2
+  routing m3 ML3
+  cut via1 VIA1
+  cut via2 VIA2
+  obs m1 ML1
+  obs m2 ML2
+  obs m3 ML3
+  obs m1,m2 VIA1
+  obs m2,m3 VIA2
+end
+
+extract
+  style default
+  planeorder pcap 0
+  planeorder pcnt 1
+  planeorder pdiff 2
+  planeorder pdio 3
+  planeorder pdm_dcn 4
+  planeorder pdm_nscn 5
+  planeorder pdm_pcn 6
+  planeorder pdm_pscn 7
+  planeorder pdm_via1 8
+  planeorder pdm_via2 9
+  planeorder pframe 10
+  planeorder phpol 11
+  planeorder pml1 12
+  planeorder pml2 13
+  planeorder pml3 14
+  planeorder pnarea 15
+  planeorder pnwl 16
+  planeorder pnwl_dp 17
+  planeorder pparea 18
+  planeorder ppol 19
+  planeorder pres 20
+  planeorder ptext 21
+  planeorder pvia1 22
+  planeorder pvia2 23
+  planeorder pm1 24
+  planeorder pm2 25
+  planeorder pm3 26
+  planeorder pref 27
+  planeorder punk120 28
+end
+

@@ -21,11 +21,11 @@ PROPERTYDEFINITIONS
 END PROPERTYDEFINITIONS
 
 # High density, single height
-SITE obscore
+SITE core
   SYMMETRY Y ;
   CLASS CORE ;
-  SIZE 2.0 BY 40.0 ;
-END obscore
+  SIZE 3.000 BY 29.000 ;
+END core
 
 LAYER DM_via1
   TYPE IMPLANT ;

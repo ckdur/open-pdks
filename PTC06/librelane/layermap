@@ -1,0 +1,68 @@
+#************************************************************************
+# File: layermap
+# Desc: EDI Stream layer mapping table for PTC06 (AKA OpenRule1um)
+# Version: 0.1b
+# DATE: September 02, 2026
+# AUTHOR: Ckristian Duran
+#************************************************************************
+
+#************************************************************************
+#
+# Copyright 2026 Ckristian Duran
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+#*************************************************************************
+
+#EDI Layer Name  EDI Layer Type               GDS Layer Number   GDS Layer Type
+#==============  ==============               ================   ==============
+NWL              ALL                          1                  0
+NWL_dp           ALL                          2                  0
+DIFF             ALL                          3                  0
+POL              ALL                          5                  0
+HPOL             ALL                          6                  0
+CNT              ALL                          7                  0
+
+RES              ALL                          15                 0
+CAP              ALL                          16                 0
+DIO              ALL                          17                 0
+Parea            ALL                          18                 0
+Narea            ALL                          19                 0
+DM_dcn           ALL                          101                0
+DM_pcn           ALL                          102                0
+DM_nscn          ALL                          103                0
+DM_pscn          ALL                          104                0
+DM_via1          ALL                          105                0
+
+# Routing
+ML1              ALL                          8                  0
+NAME             ML1/PIN                      8                  0
+
+VIA1             ALL                          9                  0
+
+ML2              ALL                          10                 0
+NAME             ML2/PIN                      10                 0
+
+VIA2             ALL                          11                 0
+
+ML3              ALL                          12                 0
+NAME             ML3/PIN                      12                 0
+
+# Text and boundary
+TEXT             ALL                          13                 0
+FRAME            ALL                          14                 0
+
+# Those were not in klayout, but discovered
+REF              ALL                          0                  0
+DM_via2          ALL                          106                0
+unk120           ALL                          120                0

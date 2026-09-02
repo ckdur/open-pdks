@@ -7,5 +7,6 @@ custom/OpenRule1um_StdCell/gds/*
 # custom/OpenRule1um_StdCell/cdl/* # Because is modified
 /Makefile
 chars/*
+lefs/*
 ngspice/*
 !ngspice/main.lib

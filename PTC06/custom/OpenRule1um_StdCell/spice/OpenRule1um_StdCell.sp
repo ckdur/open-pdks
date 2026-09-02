@@ -110,8 +110,8 @@ M2 N001 B VDD VDD pmos w=6u l=1u
 M1 net42 A VDD VDD pmos w=6u l=1u
 M0 net42 B VDD VDD pmos w=6u l=1u
 .ends exnr
-.subckt fill VDD VSS
-.ends fill
+.subckt FILL VDD VSS
+.ends FILL
 .subckt nr222 A0 A1 B0 B1 VDD VSS X
 M7 N001 A0 VSS VSS nmos w=2u l=1u
 M6 N002 B0 VSS VSS nmos w=2u l=1u
