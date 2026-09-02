@@ -122,13 +122,13 @@ gen:
         rm -rf $@ ; \
         mkdir $@ ; \
         cd $@ ; \
-	echo "init_rcx_model -corner_names \"TYP\" -met_cnt 7" > $(readCaps_tcl) ; \
+	echo "init_rcx_model -corner_names \"TYP\" -met_cnt 3" > $(readCaps_tcl) ; \
 	echo "read_rcx_tables -corner TYP -file  $(top_dir)/3v1_parse/3v1_fc.normalized.20.20.20.ALL.caps" >>  $(readCaps_tcl) ; \
 	echo "read_rcx_tables -corner TYP -file  $(top_dir)/1v2_parse/1v2_fc.normalized.20.20.20.ALL.caps" >>  $(readCaps_tcl) ; \
 	echo "read_rcx_tables -corner TYP -file  $(top_dir)/1v1/resistance.TYP " >>  $(readCaps_tcl) ; \
 	echo "write_rcx_model -file sept24.rcx.model " >> $(readCaps_tcl) ; \
 	$(or_exec) < $(readCaps_tcl) > OUT
 
-.PHONY: clean
+.PHONY: clean gen
 clean:
 	rm -rfv 1v1 1v2* 3v1* Wires Dielectrics gen
